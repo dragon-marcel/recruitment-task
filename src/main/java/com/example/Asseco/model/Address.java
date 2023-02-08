@@ -1,7 +1,7 @@
 package com.example.Asseco.model;
 
-import com.example.Asseco.model.annotation.KoliberDescription;
-import com.example.Asseco.model.annotation.KoliberFieldDescription;
+import com.example.Asseco.annotation.KoliberDescription;
+import com.example.Asseco.annotation.KoliberFieldDescription;
 
 @KoliberDescription(comment = "Adres")
 public class Address {

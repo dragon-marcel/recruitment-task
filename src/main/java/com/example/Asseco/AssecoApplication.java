@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.Asseco.model.Invoice;
-import com.example.Asseco.service.StructureUtils;
+import com.example.Asseco.utils.StructureUtils;
 
 @SpringBootApplication
 public class AssecoApplication {

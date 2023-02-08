@@ -2,8 +2,8 @@ package com.example.Asseco.model;
 
 import java.math.BigDecimal;
 
-import com.example.Asseco.model.annotation.KoliberDescription;
-import com.example.Asseco.model.annotation.KoliberFieldDescription;
+import com.example.Asseco.annotation.KoliberDescription;
+import com.example.Asseco.annotation.KoliberFieldDescription;
 
 @KoliberDescription(comment = "Opis")
 public class Invoice {
