@@ -23,17 +23,7 @@ public final class StructureUtils {
 	fields.stream().forEach(field -> {
 	    field.setAccessible(true);
 	    String name = field.getName();
-	    Object ob = field.getType();
-	    try {
-		if (field.getType().equals(List.class)) {
-		    ParameterizedType stringListType = (ParameterizedType) field.getGenericType();
-		    Class<?> stringListClass = (Class<?>) stringListType.getActualTypeArguments()[0];
-		    ob = stringListClass.newInstance();
-		} else {
-		    ob = field.getType().newInstance();
-		}
-	    } catch (InstantiationException | IllegalAccessException e) {
-	    }
+	    Object ob = getObjectFromField(field);
 
 	    if (field.isAnnotationPresent(KoliberDescription.class)) {
 		KoliberDescription koliberDescription = field.getAnnotation(KoliberDescription.class);
@@ -52,6 +42,21 @@ public final class StructureUtils {
 	
     }
 
+    private static Object getObjectFromField(Field field) {
+	Object ob = null;
+	try {
+	    if (field.getType().equals(List.class)) {
+		ParameterizedType stringListType = (ParameterizedType) field.getGenericType();
+		Class<?> stringListClass = (Class<?>) stringListType.getActualTypeArguments()[0];
+		ob = stringListClass.newInstance();
+	    } else {
+		ob = field.getType().newInstance();
+	    }
+	} catch (InstantiationException | IllegalAccessException e) {
+	}
+	return ob;
+    }
+    
     static void printTextRowStruct(int n, String name, String value) {
 	StringBuilder sb = new StringBuilder();
 
